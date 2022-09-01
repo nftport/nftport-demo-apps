@@ -7,7 +7,7 @@ API_KEY = "INSERT YOUR API_KEY"
 PAGE_SIZE = 50
 CHAIN = "ethereum"
 
-# Stores retrieved NFTs to all_nfts.csv file. Change this if want to connect to a DB or other type of storage.
+# Stores retrieved NFTs to all_nfts.csv file.
 def store_nfts(nfts, page_nr):
     if page_nr == 1:
         # Open file & write headers
@@ -66,7 +66,7 @@ def get_all_nfts():
     else:
         print(query_response["error"])
 
-    # Paging limited to page_nr > 10, remove or increase pages. If removed requests until error message or script stopped.
+    # Paging limited to page_nr > 10, remove or increase pages. If removed script stores NFTs until error message or script stopped.
     while not any([page_nr > 10, continuation == "null", continuation == None]):
         time.sleep(1)
         print("Getting NFTs for page " + str(page_nr) + " with a page size of " + str(PAGE_SIZE))
